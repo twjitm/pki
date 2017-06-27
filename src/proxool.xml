@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<something-else-entirely>
+    <proxool>
+        <alias>pki</alias>
+        <driver-url>jdbc:mysql://127.0.0.1:3306/pki</driver-url>
+        <driver-class>com.mysql.jdbc.Driver</driver-class>
+        <driver-properties>
+            <property name="user" value="root"/>
+        </driver-properties>
+        <house-keeping-sleep-time>90000</house-keeping-sleep-time>
+        <prototype-count>5</prototype-count>
+        <maximum-connection-count>10000</maximum-connection-count>
+        <minimum-connection-count>10</minimum-connection-count>
+    </proxool>
+</something-else-entirely>

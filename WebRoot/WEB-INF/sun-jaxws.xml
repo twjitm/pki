@@ -1,0 +1,11 @@
+<?xml version = "1.0"?>
+<endpoints version="2.0"
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+	<endpoint name="UserActionPort"
+		implementation="com.twj.action.UserActionDelegate"
+		url-pattern="/UserActionPort">
+	</endpoint>
+	<endpoint name="UserServicePort"
+		implementation="com.twj.service.UserServiceDelegate"
+		url-pattern="/UserServicePort">
+	</endpoint></endpoints>

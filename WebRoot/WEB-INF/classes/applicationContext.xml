@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-4.1.xsd 
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+           http://www.springframework.org/schema/context 
+		   http://www.springframework.org/schema/context/spring-context-4.1.xsd  
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<!-- 自动扫描dao和service包(自动注入)   dao包  跟 service包 改成自己的-->
+	<context:component-scan base-package="com.twj.dao,com.twj.service" />
+	
+	<!-- 数据库驱动  不用改 账号密码 URL 都需要改	需要导入 web_inf里面的jar包 然后build path-->
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="driverUrl" value="jdbc:mysql://127.0.0.1:3306/pki" />
+		<property name="user" value="root" />
+		<property name="password" value=""/>
+		<property name="maximumConnectionCount" value="100" />
+		<property name="minimumConnectionCount" value="10" />
+		<property name="statistics" value="1m,15m,1h,1d" />
+		<property name="simultaneousBuildThrottle" value="5" />
+		<property name="trace" value="false" />
+		<property name="verbose" value="false" />
+		
+		
+		
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.show_sql">ture</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<!-- 自动扫描实体 实体包  替换-->
+		<property name="packagesToScan">
+			<list>
+				<value>com.twj.entity</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /></beans> -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" />
+			<tx:method name="save*" />
+			<tx:method name="update*" />
+			<tx:method name="modify*" />
+			<tx:method name="edit*" />
+			<tx:method name="delete*" />
+			<tx:method name="remove*" />
+			<tx:method name="change*" />
+			<tx:method name="repair" />
+			<tx:method name="deleteAndRepair" />
+
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="load*" propagation="SUPPORTS" />
+			<tx:method name="search*" propagation="SUPPORTS" />
+			<tx:method name="datagrid*" propagation="SUPPORTS" />
+
+			<tx:method name="*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.twj.service.*.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	</aop:config>	
+	</beans>

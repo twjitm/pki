@@ -1,0 +1,142 @@
+/*用户查看证书*/
+*{
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+}
+body{
+	background-image: url(../img/bg.jpg);
+	background-size: 100%;
+	font-size: 16px;
+    color: #123;
+}
+.big{
+	width: 1100px;
+    border-radius: 3px;
+    min-height: 500px;
+    background: rgba(255,255,255,0.7);
+    margin: 61px 0 0 235px;
+    position: relative;
+    color:#B7B7B7;
+}
+.big .top{
+	width: 1170px;
+    height: 70px;
+    color:#B7B7B7;
+}
+.big .top h3{
+	margin: 10px auto;
+    text-align: center;
+    font-weight: 200;
+    font-size: 28px;
+    line-height: 70px;
+    color:#B7B7B7;
+}
+.big  .top_cha{
+	
+	width:1170px; 
+	height:60px;
+}
+.big  .top_cha label{
+	margin-left: 100px;
+	line-height: 60px;
+	color:#B7B7B7
+}
+.big  .top_cha select{
+	width: 120px;
+    height: 30px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 3px;
+    color:#B7B7B7
+}
+.big  .top_cha a{
+	display: inline-block;
+    width: 90px;
+    height: 30px;
+    background: #FBF2F2;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    color: #5F5E5E;
+    border-radius: 3px;
+}
+.big .con{
+	padding: 20px;
+    text-align: center;
+	color:#B7B7B7;
+}
+.big .con table{
+	width: 1059px;
+    border-collapse: collapse;
+
+}
+.big .con table tr{
+	    width: 1170px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+.big .con table tr th,td{
+	border: 1px solid #5F4747;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+}
+table a{
+	color: #1C86EE;
+}
+/*admin查询证书*/
+/*申请证书*/
+.con p{
+    padding:5px 0;
+}
+.con label{
+    display: inline-block;
+    text-align: right;
+    width: 150px;
+    padding-right: 20px;
+}
+.con p input{
+    width: 200px;
+    height:30px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.con p input[type="submit"]{
+    width: 100px;
+    cursor: pointer;
+    margin-left: 100px;
+    color: #B7B7B7;
+    padding-left: 0;
+    background-color: #EED8AE;
+    border:none;
+}
+.con span{
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+/*用户信息*/
+.userinfo{
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    color: #B7B7B7;
+}
+.userinfo span{
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 14px;
+    color:#B7B7B7;
+}
+.zsbtn{
+    height:30px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 100px;
+    cursor: pointer;
+    margin-left: 100px;
+    color: #fff;
+    background-color: #EED8AE;
+    line-height: 30px;
+}

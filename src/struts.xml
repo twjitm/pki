@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 所有匹配*.action的请求都由struts2处理 -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 是否启用开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- struts配置文件改动后，是否重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="true" ></constant>
+	<!-- 设置浏览器是否缓存静态内容 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 请求参数的编码方式 -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+	<constant name="struts.i18n.reload" value="true" />
+	<!-- 文件上传最大值 -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<!-- 让struts2支持动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- Action名称中是否还是用斜线 -->
+	<constant name="struts.enable.SlashesInActionNames" value="false" />
+	<!-- 允许标签中使用表达式语法 -->
+	<constant name="struts.tag.altSyntax" value="true" />
+	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
+	<constant name="struts.dispatcher.parametersWorkaround" value="false" /> 
+
+	<!--  <package name="default" namespace="/"  extends="struts-default">-->
+		
+
+
+      <package name="default" extends="json-default" namespace="/" ><!--需要将struts-default改为-->  
+        <action name="login" class="com.twj.action.LoginAction" method="login" >  
+          <result type="json"/>
+          <!--    <span style="color: #ff0000;">
+            </span> --> 
+            <!--返回值类型设置为json,不设置返回页面-->  
+        </action>  
+         <action name="getUserByUId" class="com.twj.action.LoginAction" method="getUserByUId">  
+          <result type="json"/>
+          <!--    <span style="color: #ff0000;">
+            </span> --> 
+            <!--返回值类型设置为json,不设置返回页面-->  
+        </action>  
+         <action name="getUserInformation" class="com.twj.action.AjaxJsonAction" method="getUserInformation">  
+          <result type="json"/>
+          <!--    <span style="color: #ff0000;">
+            </span> --> 
+            <!--返回值类型设置为json,不设置返回页面-->  
+        </action> 
+    </package>  
+	<!-- 拦截器配置 -->
+		
+
+</struts>    
